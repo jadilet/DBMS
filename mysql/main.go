@@ -31,7 +31,7 @@ func main() {
 	var err error
 
 	// creating structure database
-	db, err := sql.Open("mysql", "root:2468951@tcp(localhost:3306)/AllInOne_development?charset=utf8")
+	db, err := sql.Open("mysql", "root:your_password@tcp(localhost:3306)/AllInOne_development?charset=utf8")
 
 	if err != nil {
 		fmt.Println(err)

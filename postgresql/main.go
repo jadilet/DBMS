@@ -16,7 +16,7 @@ var (
 const (
 	dbName     = "onlineperevozka_development"
 	dbUser     = "postgres"
-	dbPassword = "2468951"
+	dbPassword = ""
 )
 
 func main() {
