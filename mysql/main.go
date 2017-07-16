@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -11,7 +12,8 @@ var (
 	db *sql.DB
 )
 
-func findById(id int) {
+// findByID
+func findByID(id int) {
 	var articleTitle sql.NullString
 
 	row := db.QueryRow("select id, articleTitle from news where id = ?", id)
@@ -31,7 +33,7 @@ func main() {
 	var err error
 
 	// creating structure database
-	db, err := sql.Open("mysql", "root:your_password@tcp(localhost:3306)/AllInOne_development?charset=utf8")
+	db, err := sql.Open("mysql", "root:2468951@tcp(localhost:3306)/AllInOne_development?charset=utf8")
 
 	if err != nil {
 		fmt.Println(err)
@@ -68,6 +70,7 @@ func main() {
 
 	rows.Close()
 
+	start := time.Now()
 	row := db.QueryRow("select id, articleTitle from news where id = 33")
 
 	if err != nil {
@@ -86,6 +89,8 @@ func main() {
 	}
 
 	fmt.Println(id, articleTitle)
+	elapsed := time.Since(start)
+	fmt.Println("query done: ", elapsed)
 
 	/*
 		result, err := db.Exec("insert into news(`articleTitle`) values(?)", "Host your Golang app on Digital Ocean with Dokku")
